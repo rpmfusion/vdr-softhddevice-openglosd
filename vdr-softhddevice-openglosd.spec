@@ -5,7 +5,7 @@
 
 Name:           vdr-softhddevice-openglosd
 Version:        0.6.1
-Release:        11.%{gitdate}git%{shortcommit}%{?dist}
+Release:        12.%{gitdate}git%{shortcommit}%{?dist}
 Summary:        A software and GPU emulated HD output device plugin for VDR
 
 License:        AGPLv3
@@ -93,6 +93,9 @@ install -Dpm 644 %{SOURCE1} \
 %license AGPL-3.0.txt
 
 %changelog
+* Tue Oct 17 2017 Leigh Scott <leigh123linux@googlemail.com> - 0.6.1-12.20160717git569fde5
+- Rebuild for ffmpeg update
+
 * Tue Jul 19 2016 Martin Gansser <martinkg@fedoraproject.org> - 0.6.1-11.20160717git569fde5
 - update for new git snapshot
 
