@@ -32,7 +32,7 @@ BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  mesa-libGLU-devel
 BuildRequires:  mesa-libGL-devel
-BuildRequires:  glm-devel
+BuildRequires:  glm-devel >= 0.9.8.4-5
 BuildRequires:  glew-devel
 BuildRequires:  freetype-devel
 Requires:       vdr(abi)%{?_isa} = %{vdr_apiversion}
