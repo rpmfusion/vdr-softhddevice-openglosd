@@ -25,7 +25,7 @@ BuildRequires:  gettext
 BuildRequires:  libva-devel
 BuildRequires:  libvdpau-devel
 BuildRequires:  alsa-lib-devel
-BuildRequires:  ffmpeg-devel < 3.4.1
+BuildRequires:  ffmpeg-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  xcb-util-devel
@@ -95,8 +95,6 @@ install -Dpm 644 %{SOURCE1} \
 %changelog
 * Thu Jan 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 0.6.1-14.20160717git569fde5
 - Rebuilt for ffmpeg-3.5 git
-- Added BR ffmpeg-devel < 3.4.1, VDPAU has been removed with ffmpeg 3.4.1 and therefore
-  vdr-softhddevice will not longer working.
 
 * Mon Jan 15 2018 Nicolas Chauvet <kwizart@gmail.com> - 0.6.1-13.20160717git569fde5
 - Rebuilt for VA-API 1.0.0
