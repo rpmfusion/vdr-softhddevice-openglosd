@@ -3,9 +3,15 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global gitdate 20160717
 
+%if 0%{?fedora} > 27
+%bcond_without  compat_ffmpeg
+%else
+%bcond_with     compat_ffmpeg
+%endif
+
 Name:           vdr-softhddevice-openglosd
 Version:        0.6.1
-Release:        14.%{gitdate}git%{shortcommit}%{?dist}
+Release:        15.%{gitdate}git%{shortcommit}%{?dist}
 Summary:        A software and GPU emulated HD output device plugin for VDR
 
 License:        AGPLv3
@@ -25,7 +31,11 @@ BuildRequires:  gettext
 BuildRequires:  libva-devel
 BuildRequires:  libvdpau-devel
 BuildRequires:  alsa-lib-devel
+%if %{with compat_ffmpeg}
+BuildRequires: compat-ffmpeg28-devel
+%else
 BuildRequires:  ffmpeg-devel
+%endif
 BuildRequires:  freeglut-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  xcb-util-devel
@@ -64,7 +74,9 @@ OSD output was added. That works only with VDPAU output on NVidia cards.
 %setup -qn softhddevice-openglosd-%{commit}
 %patch0 -p1
 %patch1 -p0
+%if ! %{with compat_ffmpeg}
 %patch2 -p1
+%endif
 
 # remove .git files and Gentoo files
 rm -f .indent.pro .gitignore .gitattributes
@@ -78,6 +90,9 @@ done
 mv README.txt README
 
 %build
+%if %{with compat_ffmpeg}
+export PKG_CONFIG_PATH=%{_libdir}/compat-ffmpeg28/pkgconfig
+%endif
 make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" %{?_smp_mflags}
 
 %install
@@ -93,6 +108,9 @@ install -Dpm 644 %{SOURCE1} \
 %license AGPL-3.0.txt
 
 %changelog
+* Mon Feb 26 2018 Leigh Scott <leigh123linux@googlemail.com> - 0.6.1-15.20160717git569fde5
+- Use compat-ffmpeg28 for F28
+
 * Thu Jan 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 0.6.1-14.20160717git569fde5
 - Rebuilt for ffmpeg-3.5 git
 
