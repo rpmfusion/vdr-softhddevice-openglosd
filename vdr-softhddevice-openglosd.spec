@@ -11,7 +11,7 @@
 
 Name:           vdr-softhddevice-openglosd
 Version:        0.6.1
-Release:        19.%{gitdate}git%{shortcommit}%{?dist}
+Release:        20.%{gitdate}git%{shortcommit}%{?dist}
 Summary:        A software and GPU emulated HD output device plugin for VDR
 
 License:        AGPLv3
@@ -26,6 +26,7 @@ Patch1:         chartype.patch
 # https://projects.vdr-developer.org/issues/2424
 Patch2:         ffmpeg_2.9.patch
 
+BuildRequires:  gcc-c++
 BuildRequires:  vdr-devel >= 1.7.22
 BuildRequires:  gettext
 BuildRequires:  libva-devel
@@ -108,6 +109,9 @@ install -Dpm 644 %{SOURCE1} \
 %license AGPL-3.0.txt
 
 %changelog
+* Sun Sep 30 2018 Sérgio Basto <sergio@serjux.com> - 0.6.1-20.20160717git569fde5
+- Add BuildRequires: gcc-c++
+
 * Sun Sep 30 2018 Sérgio Basto <sergio@serjux.com> - 0.6.1-19.20160717git569fde5
 - Rebuild for glew 2.1.0
 
