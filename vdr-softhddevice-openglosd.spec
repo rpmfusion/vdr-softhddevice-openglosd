@@ -11,7 +11,7 @@
 
 Name:           vdr-softhddevice-openglosd
 Version:        0.6.1
-Release:        31.%{gitdate}git%{shortcommit}%{?dist}
+Release:        32.%{gitdate}git%{shortcommit}%{?dist}
 Summary:        A software and GPU emulated HD output device plugin for VDR
 
 License:        AGPLv3
@@ -94,7 +94,7 @@ mv README.txt README
 %if %{with compat_ffmpeg}
 export PKG_CONFIG_PATH=%{_libdir}/compat-ffmpeg28/pkgconfig
 %endif
-make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC"
 
 %install
 %make_install
@@ -109,13 +109,16 @@ install -Dpm 644 %{SOURCE1} \
 %license AGPL-3.0.txt
 
 %changelog
+* Thu Dec 30 2021 Martin Gansser <martinkg@fedoraproject.org> - 0.6.1-32.20160717git569fde5
+- Rebuilt for new VDR API version
+
 * Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.6.1-31.20160717git569fde5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
 * Thu Feb 04 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.6.1-30.20160717git569fde5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
-* Mon Jan 04 2020 Martin Gansser <martinkg@fedoraproject.org> - 0.6.1-29.20160717git569fde5
+* Mon Jan 04 2021 Martin Gansser <martinkg@fedoraproject.org> - 0.6.1-29.20160717git569fde5
 - Rebuilt for new VDR API version
 
 * Wed Oct 21 2020 Martin Gansser <martinkg@fedoraproject.org> - 0.6.1-28.20160717git569fde5
