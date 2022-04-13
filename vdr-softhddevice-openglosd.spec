@@ -3,6 +3,10 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global gitdate 20160717
 
+# version we want build against
+%global vdr_version 2.6.1
+
+
 %if 0%{?fedora} > 27
 %bcond_without  compat_ffmpeg
 %else
@@ -11,7 +15,7 @@
 
 Name:           vdr-softhddevice-openglosd
 Version:        0.6.1
-Release:        33.%{gitdate}git%{shortcommit}%{?dist}
+Release:        34.%{gitdate}git%{shortcommit}%{?dist}
 Summary:        A software and GPU emulated HD output device plugin for VDR
 
 License:        AGPLv3
@@ -27,7 +31,7 @@ Patch1:         chartype.patch
 Patch2:         ffmpeg_2.9.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  vdr-devel >= 1.7.22
+BuildRequires:  vdr-devel >= %{vdr_version}
 BuildRequires:  gettext
 BuildRequires:  libva-devel
 BuildRequires:  libvdpau-devel
@@ -109,6 +113,9 @@ install -Dpm 644 %{SOURCE1} \
 %license AGPL-3.0.txt
 
 %changelog
+* Wed Apr 13 2022 Sérgio Basto <sergio@serjux.com> - 0.6.1-34.20160717git569fde5
+- Rebuilt for VDR 2.6.1
+
 * Sat Feb 05 2022 Martin Gansser <martinkg@fedoraproject.org> - 0.6.1-33.20160717git569fde5
 - Rebuilt for new VDR API version
 
